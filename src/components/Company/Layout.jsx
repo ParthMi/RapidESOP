@@ -1,7 +1,6 @@
 import React from 'react';
 import './css/styles.css';
 import {Outlet,Link} from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const Layout = () => {
 
@@ -22,7 +21,7 @@ const Layout = () => {
     <div  id="sidebar-wrapper"  style={{background:"#4e73df",fontFamily: "Nunito,-apple-system,BlinkMacSystemFont",fontSize:"15px"}} >
         {/* <div class="sidebar-heading " style={{background:"#4e73df",color:"white"}}>LOGO</div> */}
         <div class="list-group border" style={{background:"#4e73df"}} >
-            <Link to="/Company" class="list-group-item list-group-item-action list-group-item-light p-3" style={{background:"#4e73df",color:"white"}} ><FontAwesomeIcon icon="fa-brands fa-twitter" />Dashboard</Link>
+            <Link to="/Company" class="list-group-item list-group-item-action list-group-item-light p-3" style={{background:"#4e73df",color:"white"}} >Dashboard</Link>
             <Link class="list-group-item list-group-item-action list-group-item-light p-3"  style={{background:"#4e73df",color:"white"}}>Vesting Table</Link>
             <Link to="/Company/Employees" class="list-group-item list-group-item-action list-group-item-light p-3"  style={{background:"#4e73df",color:"white"}}>Employees</Link>
             <Link class="list-group-item list-group-item-action list-group-item-light p-3"  style={{background:"#4e73df",color:"white"}} >ESOP Scheme</Link>

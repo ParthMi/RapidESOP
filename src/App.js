@@ -1,6 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.js';
-import 'font-awesome/css/font-awesome.min.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import RegisterCom from './components/RegisterCom';
 import LoginCom from './components/LoginCom';
