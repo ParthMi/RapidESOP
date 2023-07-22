@@ -7,6 +7,9 @@ import Login from './components/Login';
 import Layout from './components/Company/Layout';
 import Dashboard from './components/Company/Dashboard';
 import Employees from './components/Company/Employees';
+import LoginEmployee from './components/LoginEmployee';
+import Profile from './components/Company/Profile';
+import VestingPlans from './components/Company/VestingPlans';
 
 function App() {
   return (
@@ -16,10 +19,13 @@ function App() {
         {/* <Route path="/" element={<Layout />}> */}
           <Route path="/RegisterCompany" element={<RegisterCom />} />
           <Route path="/LoginCompany" element={<LoginCom />} />
+          <Route path="/LoginEmployee" element={<LoginEmployee />} />
           <Route path="/" element={<Login />} />
           <Route path="/Company" element={<Layout />} >
             <Route index element={<Dashboard />} />
             <Route path="/Company/Employees" element={<Employees />} />
+            <Route path="/Company/Profile" element={<Profile />} />
+            <Route path="/Company/VestingPlans" element={<VestingPlans />} />
           </Route>
         {/* </Route> */}
       </Routes>

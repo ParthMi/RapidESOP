@@ -1,4 +1,9 @@
 @charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+.google-font{
+  font-family: 'Poppins', sans-serif;
+}
+
 /*!
 * Start Bootstrap - Simple Sidebar v6.0.6 (https://startbootstrap.com/template/simple-sidebar)
 * Copyright 2013-2023 Start Bootstrap
@@ -93,6 +98,7 @@
 
 
 body {
+
   margin: 0;
   font-family: var(--bs-body-font-family);
   font-size: var(--bs-body-font-size);
