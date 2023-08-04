@@ -2,7 +2,26 @@
 .App {
   text-align: center;
 }
+.loader
+{
 
+  animation: fadeinout 1s infinite;
+}
+
+@keyframes loader
+{
+  0%{
+    opacity:0;
+  }
+  50%
+  {
+    opacity:1;
+  }
+  100%
+  {
+    opacity:0;
+  }
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;

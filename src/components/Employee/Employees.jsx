@@ -97,8 +97,8 @@ const form = useRef();
               setnoplanexist(true)
             }
           }
-          setSelectPlan(json.data[0]?.pid)
-          console.log(json.data[0]?.pid)
+          setSelectPlan(json.data[0].pid)
+          console.log(json.data[0].pid)
           setLoader(false)
         });
 
@@ -202,10 +202,7 @@ const form = useRef();
 
       <div className='container p-3'>
         <span className='fw-bold fs-3'><FontAwesomeIcon icon={faBriefcase} style={{ color: "#090c11", }} /> Employees</span>
-        {noplanexist ? <></>
-:
-<span className="float-end"><button className='btn btn-dark' data-bs-toggle="modal" data-bs-target="#exampleModal" style={{ fontSize: "15px" }}><FontAwesomeIcon icon={faUserPlus} style={{ color: "#ffffff", }} /><span className='google-font'> Add Employee</span></button></span>}
-        <br></br>
+        <span className="float-end"><button className='btn btn-dark' data-bs-toggle="modal" data-bs-target="#exampleModal" style={{ fontSize: "15px" }}><FontAwesomeIcon icon={faUserPlus} style={{ color: "#ffffff", }} /><span className='google-font'> Add Employee</span></button></span><br></br>
 
 
 

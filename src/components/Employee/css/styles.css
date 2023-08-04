@@ -1,5 +1,9 @@
 @charset "UTF-8";
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Handjet:wght@300&display=swap");
+.logo-font{
+  font-family: 'Handjet', cursive;
+}
 .google-font{
   font-family: 'Poppins', sans-serif;
 }
@@ -4874,7 +4878,7 @@ textarea.form-control-lg {
 }
 .list-group-item-action:hover, .list-group-item-action:focus {
   z-index: 1;
-  color: var(--bs-list-group-action-hover-color);
+  color: black;
   text-decoration: none;
   /* background-color: var(--bs-list-group-action-hover-bg); */
 }
@@ -4887,9 +4891,9 @@ textarea.form-control-lg {
   position: relative;
   display: block;
   padding: var(--bs-list-group-item-padding-y) var(--bs-list-group-item-padding-x);
-  color: var(--bs-list-group-color);
+  /* color: var(--bs-list-group-color); */
   text-decoration: none;
-  background-color: var(--bs-list-group-bg);
+  /* background-color: var(--bs-list-group-bg); */
   border: var(--bs-list-group-border-width) solid var(--bs-list-group-border-color);
 }
 .list-group-item:first-child {

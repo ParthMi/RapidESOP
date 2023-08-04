@@ -3,10 +3,10 @@ import './css/styles.css';
 import { Outlet, Link ,useNavigate} from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGauge, faArrowRightFromBracket, faBell, faBullhorn } from '@fortawesome/free-solid-svg-icons'
-import load from '../load.png'
-const Layout = () => {
+import load from "../load.png"
+const EmpLayout = () => {
   const navigate=useNavigate();
-  const username=localStorage.getItem("cname");
+  const username=localStorage.getItem("fname");
 
   useEffect(()=>{
     if(localStorage.getItem("status")==="0"){
@@ -17,9 +17,10 @@ const Layout = () => {
 
 
   function logout(){
-      localStorage.removeItem("cname");
+      localStorage.removeItem("fname");
       localStorage.removeItem("email");
       localStorage.removeItem("cid");
+      localStorage.removeItem("eid");
       localStorage.setItem("status","0");
       navigate("/")
   }
@@ -40,15 +41,16 @@ const Layout = () => {
 
 
 
-      <div id="sidebar-wrapper" class="gg" style={{ background: "#000000", fontFamily: "Nunito,-apple-system,BlinkMacSystemFont", fontSize: "15px" }} >
+      <div id="sidebar-wrapper" class="gg" style={{background:"#000000" , fontFamily: "Nunito,-apple-system,BlinkMacSystemFont", fontSize: "15px" }} >
         {/* <div class="sidebar-heading " style={{background:"#4e73df",color:"white"}}>LOGO</div> */}
         <div className='google-font' style={{ background: "transparent", width: "240px", }} >
-          <Link to="/Company" class="list-group-item  p-3 hover-eff"  ><FontAwesomeIcon icon={faGauge} /> Dashboard</Link>
+          <Link to="/Employee" class="list-group-item  p-3 hover-eff" ><FontAwesomeIcon icon={faGauge} /> Dashboard</Link>
           {/* <Link class="list-group-item list-group-item-action list-group-item-light p-3" style={{ background: "#4e73df", color: "white" }}>Vesting Table</Link> */}
-          <Link to="/Company/Employees" class="list-group-item  p-3 hover-eff" >Employees</Link>
-          <Link class="list-group-item  p-3 hover-eff">ESOP Scheme</Link>
-          <Link to="/Company/VestingPlans" class="list-group-item  p-3 hover-eff" >Vesting Plans</Link>
-          <Link class="list-group-item  p-3 hover-eff"  >Manage Valuation</Link>
+          {/* <Link to="/Employee/Employees" class="list-group-item t p-3 hover-eff" >Employees</Link> */}
+          <Link to="/Employee/MyPlan" class="list-group-item t p-3 hover-eff" >My vesting plan</Link>
+          <Link to="/Employee/Allcompany" class="list-group-item t p-3 hover-eff" >All Companies</Link>
+          <Link to="/Employee/Empbuysell" class="list-group-item t p-3 hover-eff" >Buy / Sell</Link>
+          <Link to="/Employee/EmpTransactions" class="list-group-item t p-3 hover-eff" >Transactions</Link>
 
 
           {/* <button class="list-group-item list-group-item-action list-group-item-light p-3 btn btn-secondary dropdown-toggle"  style={{background:"#4e73df",color:"white"}}   type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
@@ -63,7 +65,7 @@ const Layout = () => {
   </ul> */}
 
 
-          <Link to="/Company/Profile" class="list-group-item  p-3 hover-eff" >Company Profile</Link>
+          <Link to="/Employee/EmpProfile" class="list-group-item  p-3 hover-eff" >Profile</Link>
         </div>
       </div>
 
@@ -72,26 +74,24 @@ const Layout = () => {
         <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
           <div class="container-fluid">
             <img onClick={close} id="sidebarToggle" src="https://i.stack.imgur.com/UydTk.png" style={{ cursor: "pointer" }} height={14} />
-
            <span className="logo-font fs-2"> <img src={load}  height={"40px"} style={{ }} /><b> RAPID ESOP</b></span>
             <div class="nav" id="navbarSupportedContent">
-
 
 
               <span style={{ cursor: "pointer" }} data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrollingannounce" aria-controls="offcanvasScrolling" class="nav-link p-2 mt-1"><FontAwesomeIcon icon={faBullhorn} style={{ color: "#000", }} size="xl" /></span>
 
               <span style={{ cursor: "pointer" }} data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling" class="nav-link p-2 mt-1"><FontAwesomeIcon icon={faBell} style={{ color: "#000", }} size="xl" /></span>
 
-              <a class="nav-link dropdown-toggle" style={{ color: "black" }} id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><button type="button" className="btn btn-dark shdw">{localStorage.getItem("cname")!=null ? localStorage.getItem("cname")[0].toUpperCase()  : localStorage.getItem("cname")}</button>
+              <a class="nav-link dropdown-toggle" style={{ color: "black" }} id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><button type="button" className="btn btn-dark shdw">{localStorage.getItem("fname")!=null ? localStorage.getItem("fname")[0].toUpperCase()  : localStorage.getItem("fname")}</button>
               </a>
 
 
 
               <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                 <center>
-                <Link to="/Company/Profile" class="dropdown-item"><b>Profile</b></Link>
+                <Link to="/Employee/EmpProfile" class="dropdown-item"><b>Profile</b></Link>
                 <div class="dropdown-divider"></div>
-                <button class="btn btn-outline-danger "onClick={logout}>Logout <FontAwesomeIcon icon={faArrowRightFromBracket} /></button>
+                <button onClick={logout} class="btn btn-outline-danger ">Logout <FontAwesomeIcon icon={faArrowRightFromBracket} /></button>
                 </center></div>
 
 
@@ -171,4 +171,4 @@ const Layout = () => {
   )
 }
 
-export default Layout
+export default EmpLayout
