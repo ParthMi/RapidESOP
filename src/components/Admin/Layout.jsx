@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './css/styles.css';
 import { Outlet, Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faGauge, faArrowRightFromBracket, faBell, faBullhorn,faUsers,faBriefcase,faMoneyBillTransfer,faUser,faCircleInfo,faCircleCheck } from '@fortawesome/free-solid-svg-icons'
+import { faGauge, faArrowRightFromBracket, faBell, faBullhorn,faUsers,faBriefcase,faMoneyBillTransfer,faUser,faCircleInfo } from '@fortawesome/free-solid-svg-icons'
 import load from '../load.png'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -121,23 +121,14 @@ const Layout = () => {
       <div id="sidebar-wrapper" class="gg" style={{ background: "#000000", fontFamily: "Nunito,-apple-system,BlinkMacSystemFont", fontSize: "15px" }} >
         {/* <div class="sidebar-heading " style={{background:"#4e73df",color:"white"}}>LOGO</div> */}
         <div className='google-font' style={{ background: "transparent", width: "240px", }} >
-          <Link to="/Company" class="list-group-item  p-3 hover-eff"  ><FontAwesomeIcon icon={faGauge} /> Dashboard</Link>
+          <Link to="/admin" class="list-group-item  p-3 hover-eff"  ><FontAwesomeIcon icon={faGauge} /> Dashboard</Link>
           {/* <Link class="list-group-item list-group-item-action list-group-item-light p-3" style={{ background: "#4e73df", color: "white" }}>Vesting Table</Link> */}
-          <Link to="/Company/Employees" class="list-group-item  p-3 hover-eff" ><FontAwesomeIcon icon={faUsers} /> Employees</Link>
-          <Link to="/Company/VestingPlans" class="list-group-item  p-3 hover-eff" ><FontAwesomeIcon icon={faBriefcase} /> Vesting Plans</Link>
-          <Link to="/Company/GrantApprove" class="list-group-item  p-3 hover-eff" ><FontAwesomeIcon icon={faCircleCheck} /> Grant Approve</Link>
-          <Link to="/Company/BuySellRequest" class="list-group-item  p-3 hover-eff" ><FontAwesomeIcon icon={faCircleCheck} /> Buy/Sell Request</Link>
-          
-          <Link to="/Company/Transaction" class="list-group-item  p-3 hover-eff"  ><FontAwesomeIcon icon={faMoneyBillTransfer} /> Transactions</Link>
-          <Link to="/Company/Profile" class="list-group-item  p-3 hover-eff" ><FontAwesomeIcon icon={faUser} /> Profile</Link>
-          <Link to="/Company/EsopScheme" class="list-group-item  p-3 hover-eff"><FontAwesomeIcon icon={faCircleInfo} /> ESOP Scheme</Link>
+          <Link to="/admin/allcomp" class="list-group-item  p-3 hover-eff" ><FontAwesomeIcon icon={faUsers} /> All companies</Link>
+        
           <Link to="/Company/contact_rapid" class="list-group-item  p-3 hover-eff">Contact to<span className="logo-font"> <img src={load} height={"40px"} /><b> RAPID ESOP</b></span>
 </Link>
           <center><button className='btn btn-outline-danger col-6' style={{marginTop:"50%"}} onClick={logout}>Logout</button></center>
-          <br></br>
-          <center><span >
-          <Link to="/Company/privacy-policy" style={{textDecoration:"none",color:"white"}}>Privacy Policy</Link></span></center>
-          
+         
         </div>
       </div>
 
@@ -147,7 +138,7 @@ const Layout = () => {
           <div class="container-fluid">
             <img onClick={close} id="sidebarToggle" src="https://i.stack.imgur.com/UydTk.png" style={{ cursor: "pointer" }} height={14} />
 
-            <span className="logo-font fs-2"> <img src={load} height={"40px"} /><b> RAPID ESOP</b></span>
+            <span className="logo-font fs-2"> <img src={load} height={"40px"} /><b> RAPID ESOP</b><span> ADMIN</span></span>
             <div class="nav" id="navbarSupportedContent">
 
 

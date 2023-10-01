@@ -8,7 +8,7 @@ const DoughnutChart = ({d1,d2}) => {
     datasets: [
       {
         data: [d1,d2],
-        backgroundColor: ['#99ada9', 'black'],
+        backgroundColor: ['#037BB4', '#066D40'],
       },
     ],
   };
@@ -29,7 +29,7 @@ const DoughnutChart = ({d1,d2}) => {
       },
       title: {
         display: true,
-        text: 'ESOP Chart',
+        text: 'ESOP Distribution',
         font: {
           size: 18,
           weight: 'bold',

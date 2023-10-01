@@ -3,6 +3,7 @@ import { Link,useNavigate } from 'react-router-dom';
 import load from './load.png'
 import './Employee/css/styles.css'
 import BaseUrl from './API/Api';
+
 const LoginCom = () => {
   const navigate=useNavigate();
   const [email,setEmail]=useState();

@@ -5,6 +5,8 @@ import LineChart from './LineChart'
 import DoughnutChart from './DoughnutChart'
 import BaseUrl from '../API/Api'
 import load from "../load.png"
+import { getDatabase, set, ref ,onValue} from 'firebase/database';
+import '../../context/Firebase'
 
 const Dashboard = () => {
   const data = [];
@@ -14,38 +16,57 @@ const Dashboard = () => {
   const [loader, setLoader] = useState(false);
   const [total, setTotal] = useState();
   const [distributed, setDistributed] = useState();
+  const [granted, setGranted] = useState();
+  const [pricechart,setPricechart]=useState();
   var tt;
+
   useEffect(() => {
+
     setLoader(true)
+
+    async function getchart(){
+      const db = getDatabase();
+      const starCountRef = ref(db, 'PriceChart/'+ cid + '');
+      onValue(starCountRef, (snapshot) => {
+        const data = snapshot.val();
+        // console.log(data)
+        setPricechart(data)
+      })
+    }
+
+
     async function getcompany() {
       fetch(BaseUrl + '/company/' + cid + '')
         .then((response) => response.json())
         .then((json) => {
           // setLoader(false);
-          tt=json.esop;
+          tt = json.esop;
           setCompanyinfo(json);
         })
 
       fetch(BaseUrl + '/api/company/' + cid + '/employee')
         .then((response) => response.json())
         .then((json) => {
-          console.log(json.length)
+          // console.log(json.length)
+          // console.log(json)
           if (json.length === 0) {
             setCountEmp(0)
             setDistributed(0)
           }
           else {
             var sum = 0;
+            var grant = 0;
             for (var i = 0; i < json.length; i++) {
               sum = sum + json[i].esop
+              grant = grant + json[i].granted
             }
             setCountEmp(json.length)
             console.log(sum)
-            
-              setDistributed(sum)
-              
-              var yy=tt-sum
-              setTotal(yy)
+            setGranted(grant)
+            setDistributed(sum)
+
+            var yy = tt - sum
+            setTotal(yy)
 
           }
           setLoader(false)
@@ -53,6 +74,7 @@ const Dashboard = () => {
         })
     }
     getcompany();
+    getchart();
   }, [])
 
 
@@ -88,7 +110,16 @@ const Dashboard = () => {
 
 
             </div>
+            <div class="col container ">
 
+
+              <div className='container  p-3 border border-2 rounded shdw '>
+                <p className="fw-bold">Granted ESOP</p>
+                {granted}
+              </div>
+
+
+            </div>
 
             <div class="col container ">
 
@@ -97,6 +128,7 @@ const Dashboard = () => {
                 <p className="fw-bold">Current price of ESOP</p>
                 {companyinfo?.price} rupees
               </div>
+
 
 
             </div>
@@ -121,7 +153,9 @@ const Dashboard = () => {
                 <DoughnutChart d1={total} d2={distributed} />
               </div>
               <div className='col'>
-                <LineChart />
+                 { pricechart!=null ?
+                              <LineChart time={pricechart?.time} price={pricechart?.price}/>
+              :<></>}
               </div>
             </div>
           </div>

@@ -3,6 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 import load from './load.png'
 import './Employee/css/styles.css'
 import BaseUrl from './API/Api';
+
 const RegisterCom = () => {
 
   const navigate = useNavigate();
@@ -18,6 +19,9 @@ const RegisterCom = () => {
   const [password, setPassword] = useState();
   const [message, setMessage] = useState("");
   const [price,setPrice]=useState();
+
+
+
 
   let handleSubmit = async (e) => {
     e.preventDefault();

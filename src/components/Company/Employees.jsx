@@ -1,4 +1,4 @@
-import React, { useEffect, useState,useRef } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBriefcase, faUserPlus } from '@fortawesome/free-solid-svg-icons'
 import "./css/styles.css"
@@ -7,6 +7,7 @@ import BaseUrl from '../API/Api'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import emailjs from '@emailjs/browser';
+import { Link } from "react-router-dom"
 
 
 
@@ -23,7 +24,7 @@ const Employees = () => {
 
   //if we have to add plan details manually then uncomment next line
   // const [pid, setPid] = useState();
-  
+
   const [esop, setEsop] = useState();
   const [granted, setGranted] = useState();
   const [exercise, setExercise] = useState();
@@ -36,7 +37,7 @@ const Employees = () => {
 
   //if we have to add more than one plan that convert variable to array
   const [selectplan, setSelectPlan] = useState();
-  const [noplanexist,setnoplanexist]=useState(false);
+  const [noplanexist, setnoplanexist] = useState(false);
 
   const tost = (message) => toast.success(message);
 
@@ -45,8 +46,8 @@ const Employees = () => {
 
 
 
-//send mail
-const form = useRef();
+  //send mail
+  const form = useRef();
 
 
 
@@ -87,13 +88,13 @@ const form = useRef();
           setEmployees(json)
           console.log(employees)
         })
-      }
-        async function getplan() {
+    }
+    async function getplan() {
       fetch(BaseUrl + '/vplan/company/' + cid + '/plans')
         .then((response) => response.json())
         .then((json) => {
-          if(json.data){
-            if(json.data.length===0){
+          if (json.data) {
+            if (json.data.length === 0) {
               setnoplanexist(true)
             }
           }
@@ -102,9 +103,9 @@ const form = useRef();
           setLoader(false)
         });
 
-    }  getplan();
+    } getplan();
     getallemp();
-  
+
   }, [st])
 
 
@@ -153,14 +154,14 @@ const form = useRef();
           tost(resJson.meassage)
           //mail script
           //
-        emailjs.sendForm('service_x4idkc5', 'template_rqp2zto', form.current, 'A_8SGElinJDF8jOc1')
-        .then((result) => {
-            console.log(result.text);
-        }, (error) => {
-            console.log(error.text);
-        });
-        //
-        //
+          emailjs.sendForm('service_x4idkc5', 'template_rqp2zto', form.current, 'A_8SGElinJDF8jOc1')
+            .then((result) => {
+              console.log(result.text);
+            }, (error) => {
+              console.log(error.text);
+            });
+          //
+          //
         }
       } else {
         setMessage("Some error occured");
@@ -193,7 +194,7 @@ const form = useRef();
       />
       {loader &&
         <div className="text-center  z-index-1" style={{ width: "90%" }} >
-                    <img src={load} className='loader  position-absolute' height={"80px"} style={{ marginTop: "245px" }} />
+          <img src={load} className='loader  position-absolute' height={"80px"} style={{ marginTop: "245px" }} />
 
         </div>
       }
@@ -203,8 +204,8 @@ const form = useRef();
       <div className='container p-3'>
         <span className='fw-bold fs-3'><FontAwesomeIcon icon={faBriefcase} style={{ color: "#090c11", }} /> Employees</span>
         {noplanexist ? <></>
-:
-<span className="float-end"><button className='btn btn-dark' data-bs-toggle="modal" data-bs-target="#exampleModal" style={{ fontSize: "15px" }}><FontAwesomeIcon icon={faUserPlus} style={{ color: "#ffffff", }} /><span className='google-font'> Add Employee</span></button></span>}
+          :
+          <span className="float-end"><button className='btn btn-dark' data-bs-toggle="modal" data-bs-target="#exampleModal" style={{ fontSize: "15px" }}><FontAwesomeIcon icon={faUserPlus} style={{ color: "#ffffff", }} /><span className='google-font'> Add Employee</span></button></span>}
         <br></br>
 
 
@@ -221,11 +222,11 @@ const form = useRef();
 
               <div class="modal-body">
                 <form class="row g-3" ref={form} onSubmit={addemp}>
-                <input type="hidden" name="email_message" value="Your account has been successfully created in Rapid ESOP"/>
+                  <input type="hidden" name="email_message" value="Your account has been successfully created in Rapid ESOP" />
                   <div class="col-md-6">
                     <label for="inputEmail4" class="form-label">First Name</label>
                     <input type="text" class="form-control" id="inputEmail4"
-                    name='emp_name'
+                      name='emp_name'
                       value={fname}
                       onChange={(e) => setFname(e.target.value)}
                       placeholder='Enter first name' required />
@@ -241,7 +242,7 @@ const form = useRef();
                   <div class="col-md-6">
                     <label for="inputEmail4" class="form-label">Email</label>
                     <input type="email" class="form-control" id="inputEmail4"
-                    name='emp_email'
+                      name='emp_email'
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder='Enter Email-id' required />
@@ -249,7 +250,7 @@ const form = useRef();
                   <div class="col-md-6">
                     <label for="inputPassword4" class="form-label">Password</label>
                     <input type="password" class="form-control"
-                    name='emp_password'
+                      name='emp_password'
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                       id="inputPassword4" placeholder='Enter Password' required />
@@ -317,13 +318,13 @@ const form = useRef();
 
 
                   <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="submit" data-bs-dismiss="modal" class="btn btn-dark">Add Employee</button>
-              </div>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit"  class="btn btn-dark">Add Employee</button>
+                  </div>
                 </form>
               </div>
 
-             
+
             </div>
           </div>
         </div>
@@ -361,7 +362,7 @@ const form = useRef();
           </thead>
           <tbody>
             {
-              employees?.map((emp) => {
+              employees?.map((emp,i) => {
                 return (
                   <tr>
                     <td>
@@ -370,6 +371,7 @@ const form = useRef();
                           style={{ width: "45px", height: "45px" }}
                           className="btn bg-primary bg-opacity-25 text-dark d-inline rounded-circle text-uppercase shdw"
                         ><span className='fs-5'><b>{emp.fname[0]}</b></span></button>
+
                         <div class="ms-3">
                           <p class="fw-bold mb-1">{emp.fname} {emp.lname}</p>
                           <p class="text-muted mb-0">{emp.email}</p>
@@ -408,10 +410,13 @@ const form = useRef();
           </tbody>
         </table>
         {noplanexist &&
-        <div className="" >
-          <div className='google-font fs-3' style={{ marginTop: "100px",color:"gray" }} ><center>Plan Not found !!</center></div>
-        </div>
-      }
+          <div className="" >
+            <div className='google-font fs-3' style={{ marginTop: "100px", color: "gray" }} ><center>
+              <br></br>
+              <p className="fs-5">please make vesting plan for add employees <Link to="/Company/VestingPlans">click here</Link></p>
+            </center></div>
+          </div>
+        }
 
       </div>
     </div>

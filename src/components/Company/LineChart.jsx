@@ -2,14 +2,14 @@ import React, { useRef, useEffect } from 'react';
 import { Line } from 'react-chartjs-2';
 import Chart from 'chart.js/auto';
 
-const LineChart = () => {
+const LineChart = ({time,price}) => {
   // Prepare data for the chart
   const data = {
-    labels: ['January', 'February', 'March', 'April', 'May', 'June','july'],
+    labels: time,
     datasets: [
       {
         label: 'ESOP price',
-        data: [50, 60, 70, 80, 75, 90,58],
+        data: price,
         fill: true,
         borderColor: 'black',
       },
@@ -27,14 +27,14 @@ const LineChart = () => {
           },
         },
         grid: {
-          color: 'rgba(0, 0, 0, 0.1)', // Customize the color of the y-axis grid lines
+          color: 'rgba(3, 216, 80, 0.1)', // Customize the color of the y-axis grid lines
         },
       },
     },
     plugins: {
       title: {
         display: true,
-        text: 'Line Chart',
+        text: 'Price chart',
         font: {
           size: 18, // Adjust the font size for the title
         },

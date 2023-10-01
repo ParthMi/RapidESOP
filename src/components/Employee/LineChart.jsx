@@ -2,14 +2,14 @@ import React, { useRef, useEffect } from 'react';
 import { Line } from 'react-chartjs-2';
 import Chart from 'chart.js/auto';
 
-const LineChart = () => {
+const LineChart = ({time,price}) => {
   // Prepare data for the chart
   const data = {
-    labels: ['January', 'February', 'March', 'April', 'May', 'June','july'],
+    labels: time,
     datasets: [
       {
         label: 'ESOP price',
-        data: [50, 60, 70, 80, 75, 90,58],
+        data: price,
         fill: true,
         borderColor: 'black',
       },
@@ -34,7 +34,7 @@ const LineChart = () => {
     plugins: {
       title: {
         display: true,
-        text: 'Line Chart',
+        text: 'ESOP price chart',
         font: {
           size: 18, // Adjust the font size for the title
         },
@@ -45,7 +45,7 @@ const LineChart = () => {
       },
       tooltips: {
         enabled: true, // Enable tooltips on hover
-        backgroundColor: 'rgba(0, 0, 0, 0.8)', // Customize the background color of tooltips
+        backgroundColor: 'rgba(3,206,777, 0.8)', // Customize the background color of tooltips
         titleFont: {
           size: 14, // Adjust the font size for the tooltip title
           weight: 'bold', // Set the font weight for the tooltip title
